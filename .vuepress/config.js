@@ -94,7 +94,7 @@ module.exports = {
             collapsable: false,
             sidebarDepth: 1,
             children: [
-				'준비물',
+				'prerequisites',
 				{
                     title: '하드웨어 제한',
                     collapsable: true,
