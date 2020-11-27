@@ -242,7 +242,7 @@ module.exports = {
                     title: '랩톱 전용',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery', '배터리 '픽스],
+                        ['https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery', '배터리 픽스'],
 
                     ]
                 },
