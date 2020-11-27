@@ -3,7 +3,7 @@ const {
 } = require('../package')
 
 module.exports = {
-    title: 'OpenCore Install Guide',
+    title: 'OpenCore 설치 가이드',
     head: [
         ['meta', {
             name: 'theme-color',
@@ -55,48 +55,48 @@ module.exports = {
 
     themeConfig: {
         lastUpdated: true,
-        repo: 'https://github.com/dortania/OpenCore-Install-Guide',
+        repo: 'https://github.com/mswgen/OpenCore-Install-Guide',
 		editLinks: true,
-		editLinkText: 'Help us improve this page!',
+		editLinkText: '이 사이트의 발전을 도와주세요!',
         logo: 'homepage.png',
         nav: [{
-            text: 'Dortania Guides',
-            ariaLabel: 'Language Menu',
+            text: 'Dortania 가이드',
+            ariaLabel: '언어',
             items: [{
-                text: 'Home Site',
+                text: 'Dortania 홈페이지(영어)',
                 link: 'https://dortania.github.io/'
             },
             {
-                text: 'Getting Started With ACPI',
+                text: 'ACPI 시작하기(영어)',
                 link: 'https://dortania.github.io/Getting-Started-With-ACPI/'
             },
             {
-                text: 'OpenCore Post-Install',
+                text: 'OpenCore 설치 후 안정화(영어)',
                 link: 'https://dortania.github.io/OpenCore-Post-Install/'
             },
             {
-                text: 'GPU Buyers Guide',
+                text: 'GPU 구매 가이드(영어)',
                 link: 'https://dortania.github.io/GPU-Buyers-Guide/'
             },
             {
-                text: 'Wireless Buyers Guide',
+                text: '무선 랜카드 구매 가이드(영어)',
                 link: 'https://dortania.github.io/Wireless-Buyers-Guide/'
             },
             {
-                text: 'Anti Buyers Guide',
+                text: '해킨토시 컴퓨터 구매 가이드(영어)',
                 link: 'https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/'
             },
             ]
         },
         ],
         sidebar: [{
-            title: 'Introduction',
+            title: '소개',
             collapsable: false,
             sidebarDepth: 1,
             children: [
-				'prerequisites',
+				'준비물',
 				{
-                    title: 'Hardware Limitations',
+                    title: '하드웨어 제한',
                     collapsable: true,
                     path: 'macos-limits',
                     children: [
@@ -109,11 +109,11 @@ module.exports = {
 
         },
         {
-            title: 'USB Creation',
+            title: 'USB 만들기',
             collapsable: false,
             sidebarDepth: 2,
             children: [{
-                title: 'Creating the USB',
+                title: 'USB 만들기',
                 collapsable: true,
                 path: '/installer-guide/',
                 sidebarDepth: 1,
@@ -125,48 +125,48 @@ module.exports = {
             },
                 '/installer-guide/opencore-efi',
                 'ktext',
-            ['https://dortania.github.io/Getting-Started-With-ACPI/', 'Getting started with ACPI'],
+            ['https://dortania.github.io/Getting-Started-With-ACPI/', 'ACPI 시작하기(영어)'],
                 '/config.plist/',
             ]
         },
         {
-            title: 'Configs',
+            title: '설정',
             collapsable: false,
             children: [{
-                title: 'Intel Desktop config.plist',
+                title: '인텔 데스크톱 config.plist',
                 collapsable: true,
 				sidebarDepth: 1,
                 children: [
                     ['/config.plist/penryn', 'Penryn'],
                     ['/config.plist/clarkdale', 'Clarkdale'],
-                    ['/config.plist/sandy-bridge', 'Sandy Bridge'],
-                    ['/config.plist/ivy-bridge', 'Ivy Bridge'],
-                    ['/config.plist/haswell', 'Haswell'],
-                    ['/config.plist/skylake', 'Skylake'],
-                    ['/config.plist/kaby-lake', 'Kaby Lake'],
-                    ['/config.plist/coffee-lake', 'Coffee Lake'],
-                    ['/config.plist/comet-lake', 'Comet Lake'],
+                    ['/config.plist/sandy-bridge', '2세대 샌드브릿지'],
+                    ['/config.plist/ivy-bridge', '3세대 아이비브릿지'],
+                    ['/config.plist/haswell', '4세대 하스웰, 5세대 브로드웰'],
+                    ['/config.plist/skylake', '6세대 스카이레이크'],
+                    ['/config.plist/kaby-lake', '7세대 카비레이크'],
+                    ['/config.plist/coffee-lake', '8, 9세대 커피레이크'],
+                    ['/config.plist/comet-lake', '10세대 코멧레이크'],
                 ]
             },
             {
-                title: 'Intel Laptop config.plist',
+                title: '인텔 랩톱 config.plist',
                 collapsable: true,
 				sidebarDepth: 1,
                 children: [
                     ['/config-laptop.plist/arrandale', 'Arrandale'],
-                    ['/config-laptop.plist/sandy-bridge', 'Sandy Bridge'],
-                    ['/config-laptop.plist/ivy-bridge', 'Ivy Bridge'],
-                    ['/config-laptop.plist/haswell', 'Haswell'],
-					['/config-laptop.plist/broadwell', 'Broadwell'],
-                    ['/config-laptop.plist/skylake', 'Skylake'],
-                    ['/config-laptop.plist/kaby-lake', 'Kaby Lake'],
-                    ['/config-laptop.plist/coffee-lake', 'Coffee Lake and Whiskey Lake'],
-					['/config-laptop.plist/coffee-lake-plus', 'Coffee Lake Plus and Comet Lake'],
-                    ['/config-laptop.plist/icelake', 'Ice Lake'],
+                    ['/config-laptop.plist/sandy-bridge', '2세대 샌디브릿지'],
+                    ['/config-laptop.plist/ivy-bridge', '3세대 아이비브릿지'],
+                    ['/config-laptop.plist/haswell', '4세대 하스웰'],
+					['/config-laptop.plist/broadwell', '5세대 브로드웰'],
+                    ['/config-laptop.plist/skylake', '6세대 스카이레이크'],
+                    ['/config-laptop.plist/kaby-lake', '7세대 카비레이크'],
+                    ['/config-laptop.plist/coffee-lake', '8, 9세대 커피레이크, 위스키레이크'],
+					['/config-laptop.plist/coffee-lake-plus', '커피레이크 플러스, 10세대 코멧레이크'],
+                    ['/config-laptop.plist/icelake', '11세대 아이스레이크'],
                 ]
             },
             {
-                title: 'Intel HEDT config.plist',
+                title: '인텔  HEDT config.plist',
                 collapsable: true,
 				sidebarDepth: 1,
                 children: [
@@ -178,7 +178,7 @@ module.exports = {
                 ]
             },
             {
-                title: 'AMD Desktop config.plist',
+                title: 'AMD 데스크톱 config.plist',
                 collapsable: true,
 				sidebarDepth: 1,
                 children: [
@@ -189,7 +189,7 @@ module.exports = {
             ]
         },
         {
-            title: 'Installation',
+            title: '설치',
             collapsable: false,
             children: [
                 '/installation/installation-process',
@@ -197,7 +197,7 @@ module.exports = {
             ]
         },
         {
-            title: 'Troubleshooting',
+            title: '문제 해결',
             collapsable: false,
             children: [
                 '/troubleshooting/troubleshooting',
@@ -218,7 +218,7 @@ module.exports = {
             ]
         },
         {
-            title: 'Post Install',
+            title: '설치 후 안정화(영어)',
             collapsable: false,
             children: [
                 ['https://dortania.github.io/OpenCore-Post-Install/', 'Post-Install'],
@@ -227,66 +227,66 @@ module.exports = {
                     collapsable: true,
                     sidebarDepth: 1,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/security', 'Security and FileVault'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/audio', 'Fixing Audio'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd', 'Booting without USB'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/update', 'Updating OpenCore, kexts and macOS'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/drm', 'Fixing DRM'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/iservices', 'Fixing iServices'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/pm', 'Fixing Power Management'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/sleep', 'Fixing Sleep'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/usb/', 'Fixing USB'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/security', '보안과 FileVault'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/audio', '사운드 픽스'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd', 'USB 없이 부팅하기'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/update', 'OpenCore, kexts 및 macOS 업데이트'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/drm', 'DRM 픽스'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/iservices', 'iServices 픽스'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/pm', '전원 관리 픽스'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/sleep', '잠자기(절전 모드) 픽스'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/usb/', 'USB 픽스'],
                     ]
                 },
                 {
-                    title: 'Laptop Specifics',
+                    title: '랩톱 전용',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery', 'Fixing Battery Read-outs'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery', '배터리 '픽스],
 
                     ]
                 },
                 {
-                    title: 'Cosmetics',
+                    title: '코스메틱',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose', 'Fixing Resolution and Verbose'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui', 'Add GUI and Boot-chime'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose', '해상도 및 로그 픽스'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui', 'GUI와 부팅음 추가'],
                     ]
                 },
                 {
-                    title: 'Multiboot',
+                    title: '멀티 부팅',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap', 'Setting up Bootstrap.efi'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp', 'Installing BootCamp'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap', 'Bootstrap.efi 사용하기'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp', 'BootCamp 설치'],
                     ]
                 },
                 {
-                    title: 'Miscellaneous',
+                    title: '기타',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/misc/rtc', 'Fixing RTC'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock', 'Fixing CFG Lock'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/misc/nvram', 'Emulated NVRAM'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/misc/rtc', 'RTC 픽스'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock', 'CFG Lock 픽스'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/misc/nvram', 'NVRAM 에뮬레이션'],
                     ]
                 },
             ]
         },
         {
-            title: 'Extras',
+            title: '그 외',
             collapsable: false,
 			sidebarDepth: 2,
             children: [
                 '/extras/kaslr-fix',
                 '/extras/spoof',
                 '/extras/big-sur/',
-                ['https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion', 'Clover Conversion'],
+                ['https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion', 'Clover에서 OpenCore로 이동하기'],
                 '/extras/smbios-support.md',
             ]
         },
         {
-            title: 'Misc',
+            title: '기타',
             collapsable: false,
             children: [
                 'CONTRIBUTING',
