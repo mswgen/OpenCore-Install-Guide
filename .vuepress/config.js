@@ -55,7 +55,7 @@ module.exports = {
 
     themeConfig: {
         lastUpdated: true,
-        repo: 'https://github.com/mswgen/OpenCore-Install-Guide',
+        repo: 'https://github.com/mswgen/OpenCore-Install-Guide.git',
 		editLinks: true,
 		editLinkText: '이 사이트의 발전을 도와주세요!',
         logo: 'homepage.png',
@@ -137,8 +137,8 @@ module.exports = {
                 collapsable: true,
 				sidebarDepth: 1,
                 children: [
-                    ['/config.plist/penryn', 'Penryn'],
-                    ['/config.plist/clarkdale', 'Clarkdale'],
+                    ['/config.plist/penryn', '코어 2 펜린'],
+                    ['/config.plist/clarkdale', '1세대 클락데일'],
                     ['/config.plist/sandy-bridge', '2세대 샌드브릿지'],
                     ['/config.plist/ivy-bridge', '3세대 아이비브릿지'],
                     ['/config.plist/haswell', '4세대 하스웰, 5세대 브로드웰'],
@@ -149,11 +149,11 @@ module.exports = {
                 ]
             },
             {
-                title: '인텔 랩톱 config.plist',
+                title: '인텔 노트북 config.plist',
                 collapsable: true,
 				sidebarDepth: 1,
                 children: [
-                    ['/config-laptop.plist/arrandale', 'Arrandale'],
+                    ['/config-laptop.plist/arrandale', '1세대 아란데일'],
                     ['/config-laptop.plist/sandy-bridge', '2세대 샌디브릿지'],
                     ['/config-laptop.plist/ivy-bridge', '3세대 아이비브릿지'],
                     ['/config-laptop.plist/haswell', '4세대 하스웰'],
@@ -161,7 +161,7 @@ module.exports = {
                     ['/config-laptop.plist/skylake', '6세대 스카이레이크'],
                     ['/config-laptop.plist/kaby-lake', '7세대 카비레이크'],
                     ['/config-laptop.plist/coffee-lake', '8, 9세대 커피레이크, 위스키레이크'],
-					['/config-laptop.plist/coffee-lake-plus', '커피레이크 플러스, 10세대 코멧레이크'],
+					['/config-laptop.plist/coffee-lake-plus', '10세대 코멧레이크'],
                     ['/config-laptop.plist/icelake', '11세대 아이스레이크'],
                 ]
             },
@@ -221,7 +221,7 @@ module.exports = {
             title: '설치 후 안정화(영어)',
             collapsable: false,
             children: [
-                ['https://dortania.github.io/OpenCore-Post-Install/', 'Post-Install'],
+                ['https://dortania.github.io/OpenCore-Post-Install/', '설치 후 안정화'],
                 {
                     title: 'Universal',
                     collapsable: true,
@@ -230,16 +230,16 @@ module.exports = {
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/security', '보안과 FileVault'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/audio', '사운드 픽스'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd', 'USB 없이 부팅하기'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/update', 'OpenCore, kexts 및 macOS 업데이트'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/update', 'OpenCore, kext 및 macOS 업데이트'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/drm', 'DRM 픽스'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/iservices', 'iServices 픽스'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/iservices', 'iService 픽스'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/pm', '전원 관리 픽스'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/sleep', '잠자기(절전 모드) 픽스'],
                         ['https://dortania.github.io/OpenCore-Post-Install/usb/', 'USB 픽스'],
                     ]
                 },
                 {
-                    title: '랩톱 전용',
+                    title: '노트북 전용',
                     collapsable: true,
                     children: [
                         ['https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery', '배터리 픽스'],
