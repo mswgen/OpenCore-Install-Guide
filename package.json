@@ -24,7 +24,8 @@
       "vuepress-theme-book": "0.0.3",
       "vuepress-theme-dark-new": "^0.1.2",
       "vuepress-theme-succinct": "^1.5.3",
-      "vuepress-theme-yuu": "^2.3.0"
+      "vuepress-theme-yuu": "^2.3.0",
+      "markdown-it-multimd-table": "^4.0.3"
    },
    "homepage": "https://dortania.github.io/OpenCore-Install-Guide/"
 }
