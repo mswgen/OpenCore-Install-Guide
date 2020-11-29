@@ -283,9 +283,9 @@ module.exports = {
                 '/extras/big-sur/',
                 {
                     title: 'Clover에서 OpenCore로 이동하기',
+                    path: '/clover-conversion/',
                     collapsable: true,
                     children: [
-                        ['/clover-conversion', '시작하기'],
                         ['/clover-conversion/Clover-boot-arg', 'boot-arg 변경'],
                         ['/clover-conversion/Clover-config', 'config.plist 변경'],
                         ['/clover-conversion/clover-efi', 'efi 변경'],
