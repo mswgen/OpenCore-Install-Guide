@@ -43,7 +43,7 @@ config.plist를 만드는 것이 어려워 보일 수도 있지만 사실은 그
 
  여기에 자동 생성된 `DSDT.aml`을 추가하면 **안 됩니다**. 이는 이미 펌웨어에 있습니다. 만약 `DSDT.aml`이 존재한다면, EFI/OC/ACPI와 config.plist에서 `DSDT.aml`에 대한 엔트리를 제거하세요.
 
-SSDT제작 및 컴파일, DSDT 덤프 등에 대한 자세한 정보는 [**Getting started with ACPI(영어) 가이드**](https://dortania.github.io/Getting-Started-With-ACPI/)를 참고하세요. 컴파일된 SSDT의 확장자는 **.aml**이며, `EFI/OC/ACPI` 폴더에 위치하고 config.plist의 `ACPI -> Add`에도 설정되어있어야 합니다.
+SSDT 제작 및 컴파일, DSDT 덤프 등에 대한 자세한 정보는 [**Getting started with ACPI(영어) 가이드**](https://dortania.github.io/Getting-Started-With-ACPI/)를 참고하세요. 컴파일된 SSDT의 확장자는 **.aml**이며, `EFI/OC/ACPI` 폴더에 위치하고 config.plist의 `ACPI -> Add`에도 설정되어있어야 합니다.
 
 :::
 
@@ -260,7 +260,7 @@ boot.efi 패치와 펌웨어 픽스와 관련된 설정입니다. 이 가이드�
 * **CustomSMBIOSGuid**: false
   * UpdateSMBIOS가 `Custom`으로 설정된 경우의 GUID 패치를 실행합니다. 일반적으로 Dell 노트북에 필요합니다.
   * 이 quirk를 `PlatformInfo -> UpdateSMBIOSMode -> Custom`과 함께 사용하는 것은 비 애플 OS로의 SMBIOS 인젝션을 끄지만, 이 방법은 Bootcamp 호환성을 없애버리기 때문에 권장하지 않습니다. 
-* **DisableIoMapper**:  false
+* **DisableIoMapper**: false
   * AMD에는 DMAR이나 VT-d가 없기 때문에 관련이 없죠.
 * **DisableLinkeditJettison**: true
   * `keepsyms=1` 없이 Lilu 등이 더욱 안정적인 성능을 갖도록 하기 위해 사용합니다.
@@ -268,7 +268,7 @@ boot.efi 패치와 펌웨어 픽스와 관련된 설정입니다. 이 가이드�
   * AppleRTC가 주 체크섬(0x58~0x59)에 쓰는 것을 막기 위해 사용됩니다. 재부팅/종료 후에 BIOS가 초기화되거나 안전 모드가 됐을 떄 필요하죠.
 * **ExtendBTFeatureFlags** false
   * 비 애플/비 Fenvi 카드 관련 연속성 문제가 있을 때 사용하면 좋습니다.
-* **LapicKernelPanic**:   false
+* **LapicKernelPanic**: false
   * AP 코어 lapic 인터럽트로 인한 커널 패닉을 끕니다. 일반적으로 HP 시스템에 필요하죠. Clover의 `kernel LAPIC`과 동일합니다.
 * **LegacyCommpage**: false
   * macOS에서 64비트 CPU의 SSSE3 요구 사항을 해결합니다. 일반적으로 64비트 펜티엄 4 CPU에 필요합니다.
