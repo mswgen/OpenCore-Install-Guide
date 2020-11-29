@@ -1,18 +1,18 @@
-# Converting common Kernel and Kext patches
+# 커널 및 kext 패치 전환
 
-## Manually converting a patch
+## 직접 패치 전환하기
 
-When converting a kernel/kext patch into one for OpenCore, you'll need to remember a few things
+커널/kext 패치를 OpenCore에 맞게 전환할 때, 몇 가지를 기억해야 합니다:
 
-* `InfoPlistPatch` has no feature parity
-* `MatchOS` is replaced with `MinKernel` and `MaxKernel`
-* Both kernel and kext patches go under `Kernel -> Patch`, and you use `Identifier` to say whether it's the kernel or a specific kext you want to patch
+* `InfoPlistPatch`와 같은 속성이 없습니다.
+* `MatchOS`를 `MinKernel`과 `MaxKernel`로 바꿔주세요.
+* 커널과 kext 패치 모두 `Kernel -> Patch`에 위치하고, `Identifier`를 통해 커널이나 특정 kext를 패치하려는 것인지 입력해주세요.
 
-Now lets look at this example:
+예시를 보면,
 
 **KernelToPatch**:
 
-| Key | Type | Value |
+| 키 | 타입 | 값 |
 | :--- | :--- | :--- |
 | Comment | String | cpuid_set_cpufamily - force CPUFAMILY_INTEL_PENRYN |
 | Disabled | Boolean | False |
@@ -21,22 +21,22 @@ Now lets look at this example:
 | Find | Data | 31db803d4869980006755c |
 | Replace | Data | bbbc4fea78e95d00000090 |
 
-So to convert this patch, see below:
+이 패치를 전환하려면, 아래를 확인해주세요:
 
-* `Comment`: Available both on Clover and OpenCore
-* `Disabled`: OpenCore uses `Enabled` instead
-* `MatchBuild`: OpenCore uses `MinKernel` and `MaxKernel`, see below for more info
-* `MatchOS`: OpenCore uses `MinKernel` and `MaxKernel`, see below for more info
-* `Find`: Available both on Clover and OpenCore
-* `Replace`: Available both on Clover and OpenCore
-* `MaskFind`: OpenCore uses `Mask` instead
-* `MaskReplace`: Available both on Clover and OpenCore
+* `Comment`: Clover와 OpenCore 모두 가능해요.
+* `Disabled`: OpenCore는 대신 `Enabled`를 사용해요.
+* `MatchBuild`: OpenCore는 `MinKernel`과 `MaxKernel`을 사용해요. 자세한 정보는 아래를 확인해주세요.
+* `MatchOS`: OpenCore는 `MinKernel`과 `MaxKernel`을 사용해요. 자세한 정보는 아래를 확인해주세요.
+* `Find`: Clover와 OpenCore 모두 가능해요.
+* `Replace`: Clover와 OpenCore 모두 가능해요.
+* `MaskFind`: OpenCore는 대신 `Mask`를 사용해요.
+* `MaskReplace`: Clover와 OpenCore 모두 가능해요.
 
-So the above patch would become:
+그러니까 위에 있는 패치는
 
 **Kernel -> Patch**:
 
-| Key | Type | Value |
+| 키 | 타입 | 값 |
 | :--- | :--- | :--- |
 | Comment | String | cpuid_set_cpufamily - force CPUFAMILY_INTEL_PENRYN |
 | Enabled | Boolean | True |
@@ -51,30 +51,48 @@ So the above patch would become:
 | Mask | Data | |
 | ReplaceMask | Data | |
 
-For Min and MaxKernel, we can use the below as for info, so 18G95 has the kernel version `18.7.0` and 18G103 has `18.7.0`(both being the same kernel):
+이렇게 되죠.
 
-* [macOS Mojave: Release history](https://en.wikipedia.org/wiki/MacOS_Mojave#Release_history)
+::: details 커널 지원 표
 
-For Identifier, you'll either define `kernel` or the kext you want to patch(ie. `com.apple.iokit.IOGraphicsFamily` )
+| macOS 버전 | MinKernel | MaxKernel |
+| :--- | :--- | :--- |
+| 10.4(Tiger) | 8.0.0 | 8.99.99 |
+| 10.5(Leopard) | 9.0.0 | 9.99.99 |
+| 10.6(Snow Leopard) | 10.0.0 | 10.99.99 |
+| 10.7(Lion) | 11.0.0 | 11.99.99 |
+| 10.8(Mountain Lion) | 12.0.0 | 12.99.99 |
+| 10.9(Mavericks) | 13.0.0 | 13.99.99 |
+| 10.10(Yosemite) | 14.0.0 | 14.99.99 |
+| 10.11(El Capitan) | 15.0.0 | 15.99.99 |
+| 10.12(Sierra) | 16.0.0 | 16.99.99 |
+| 10.13(High Sierra) | 17.0.0 | 17.99.99 |
+| 10.14(Mojave) | 18.0.0 | 18.99.99 |
+| 10.15(Catalina) | 19.0.0 | 19.99.99 |
+| 11.0(Big Sur) | 20.0.0 | 20.99.99 |
 
-Regarding Limit, Count and Skip, they are set to `0` so they apply to all instances. `Mask` and `ReplaceMask` can be left as blank as Clover doesn't support masking(until very recently but won't be covered here).
+:::
 
-## Common patches in OpenCore and co
+Identifier의 경우 `kernel` 혹은 패치할 kext(에: `com.apple.iokit.IOGraphicsFamily`)를 입력합니다.
 
-Little section mentioning common Kernel and Kexts patches that have been absorbed into OpenCore or other kexts. This list is not complete so any that may have been forgotten can be mentioned by opening a new [issue](https://github.com/khronokernel/OpenCore-Vanilla-Desktop-Guide/issues). Any help is much appreciated
+Limit, Count, Skip은 모든 인스턴스에 적용하기 위해 `0`으로 설정합니다. Clover는 마스킹을 지원하지 않기 때문에 `Mask`와 `ReplaceMask` 는 빈칸으로 남겨두면 됩니다. 
 
-### Kernel Patches
+## OpenCore에서의 일반 패치
 
-For a full list of patches OpenCore supports, see [/Library/OcAppleKernelLib/CommonPatches.c](https://github.com/acidanthera/OpenCorePkg/blob/master/Library/OcAppleKernelLib/CommonPatches.c)
+OpenCore나 다른 kext로 병합된 일반 커널/kext 패치에 대해 언급하는 섹션입니다. 이 리스트는 완성되지 않았기 때문에 언급되지 않은 내용이 있으면 원본 레포에 [새 이슈를 만들어주세요](https://github.com/dortania/bugrtacker/issues).
 
-**General Patches**:
+### 커널 패치
+
+OpenCore가 지원하는 패치에 대한 전체 리스트는 [/Library/OcAppleKernelLib/CommonPatches.c](https://github.com/acidanthera/OpenCorePkg/blob/master/Library/OcAppleKernelLib/CommonPatches.c)를 참고해주세요.
+
+**일반 패치**:
 
 * `MSR 0xE2 _xcpm_idle instant reboot` (c) Pike R. Alpha
   * `Kernel -> Quirks -> AppleXcpmCfgLock`
 
-**HEDT Specific Patches**:
+**HEDT 전용 패치**:
 
-All of the following patches are inside the `Kernel -> Quirk -> AppleXcpmExtraMsrs`
+아래의 모든 패치는 `Kernel -> Quirk -> AppleXcpmExtraMsrs`로 병합되었습니다.
 
 * `_xcpm_bootstrap` © Pike R. Alpha
 * `xcpm_pkg_scope_msrs` © Pike R. Alpha
@@ -85,24 +103,24 @@ All of the following patches are inside the `Kernel -> Quirk -> AppleXcpmExtraMs
 * xcpm MSR Patch 1 and 2 @Pike R. Alpha
 * `/0x82D390/MSR_PP0_POLICY 0x63a xcpm support` patch 1 and 2 Pike R. Alpha
 
-### Kext Patches
+### Kext 패치
 
 * `Disable Panic Kext logging`
   * `Kernel -> Quirks -> PanicNoKextDump`
-* AppleAHCIPort External Icon Patch1
+* AppleAHCIPort 외부 아이콘 패치1
   * `Kernel -> Quirks -> ExternalDiskIcons`
-* SSD Trim Enabler
+* SSD Trim 켜기
   * `Kernel -> Quirks -> ThirdPartyDrives`
-* USB Port Limit Patches
+* USB 포트 제한 패치
   * `Kernel -> Quirks -> XhciPortLimit`
-* FredWst DP/HDMI patch
+* FredWst DP/HDMI 패치
   * [AppleALC](https://github.com/acidanthera/AppleALC/releases) + [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)
-* IOPCIFamily Patch
+* IOPCIFamily 패치
   * `Kernel -> Quirks -> IncreasePciBarSize`
-* Disable board-ID check
+* board-ID 채크 끄기
   * [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)
-* AppleHDA Patch
+* AppleHDA 패치
   * [AppleALC](https://github.com/acidanthera/AppleALC/releases)
-* IONVMe Patches
-  * Not required anymore on High Sierra and newer
-  * For power management on Mojave and newer: [NVMeFix](https://github.com/acidanthera/NVMeFix/releases)
+* IONVMe 패치
+  * High Sierra 이상에서는 필요하지 않습니다.
+  * Mojave 이상에서의 전원 관리는 [NVMeFix](https://github.com/acidanthera/NVMeFix/releases)를 이용해주세요.

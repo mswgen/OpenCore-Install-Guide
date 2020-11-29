@@ -1,79 +1,79 @@
-# Converting common properties from Clover to OpenCore
+# Clover에서 OpenCore로 일반 설정 전환하기
 
-* Supported version: 0.6.3
+* 지원되는 버전: 0.6.3
 
-So this little(well not so little as I reread this...) page is for users who are having issues migrating from Clover to OpenCore as some of their legacy quirks are required or the Configuration.pdf isn't well suited for laptop users.  
+이 페이지는 Clover에서 OpenCore로 전환하는 데 문제가 있는 사용자들을 위한 섹션입니다.
 
-# Kexts and Firmware drivers
+# kext와 펌웨어 드라이버
 
-See [Kexts and Firmware drivers](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md).
+[kext와 펌웨어 드라이버](https://ocguide.mswgen.ga/clover-conversion/clover-efi)를 이용해주세요.
 
-# Acpi
+# acpi
 
-**ACPI Renames**:
+**ACPI 이름 변경**:
 
-So with the transition from Clover to OpenCore we should start removing unneeded patches you may have carried along for some time:
+Clover에서 OpenCorefh 전환하기 위해서는 먼저 필요하지 않는 패치를 제거합니다.
 
-* EHCI Patches: Recommended to power off the controller with [SSDT-EHCx_OFF](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EHCx_OFF.dsl). Skylake and newer users do not have an EHCI controller so no need for this.
+* EHCI 패치: 컨트롤러를 [SSDT-EHCx_OFF](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EHCx_OFF.dsl)를 통해 끄는 것이 권장됩니다. 스카이레이크 이상 CPU는 EHCI 컨트롤러가 없기 때문에 이것이 필요하지 않습니다.
   * change EHC1 to EH01
   * change EHC2 to EH02
-* XHCI Patches: Not needed once an [Injector kext](https://github.com/corpnewt/USBMap) is made
+* XHCI 패치: [인젝터 kext](https://github.com/corpnewt/USBMap)가 만들어지면 필요하지 않습니다.
   * change XHCI to XHC
   * change XHC1 to XHC
-* SATA patches: Purely cosmetic in macOS now
+* SATA 패치: 최신 macOS에서는 코스메틱입니다.
   * change SAT0 to SATA
   * change SAT1 to SATA
-* IMEI Patches: Handled by [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)
+* IMEI 패치: [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)을 통해 핸들링됩니다.
   * change HECI to IMEI
   * change HEC1 to IMEI
   * change MEI to IMEI
   * change IDER to MEID
-* GFX patches: Handled by [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)
+* GFX 패치: [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases)을 통해 핸들링됩니다.
   * change GFX0 to IGPU
   * change PEG0 to GFX0
   * change PEGP to GFX0
   * change SL01 to PEGP
-* EC Patches: See here on best solution: [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
+* EC 패치: 가장 좋은 해결책은 [ACPI 시작하기(영어)](https://dortania.github.io/Getting-Started-With-ACPI/)를 참고해주세요.
   * change EC0 to EC
   * change H_EC to EC
   * change ECDV to EC
   * change PGEC to EC
-* Audio renames: Handled by [AppleALC](https://github.com/acidanthera/AppleALC)
+* 사운드 이름 변경: [AppleALC](https://github.com/acidanthera/AppleALC)를 통해 핸들링됩니다.
   * change HDAS to HDEF
   * change CAVS to HDEF
   * change AZAL to HDEF
   * change ALZA to HDEF
   * change B0D3 to HDAU
-* Z390 BIOS RTC bug fix: See here on best solution: [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)(SSDT-AWAC)
+* Z390 BIOS RTC 버그 픽스: 가장 좋은 해결책은 [ACPI 시작하기(영어)](https://dortania.github.io/Getting-Started-With-ACPI/)(SSDT-AWAC)를 참고해주세요.
   * change STAS to [Blank]
   * Fix Z390 BIOS DSDT Device(RTC) bug
   * Fix 300-series RTC Bug
-* NVMe patches: [NVMeFix](https://github.com/acidanthera/NVMeFix) fixes power management
+* NVMe 패치: [NVMeFix](https://github.com/acidanthera/NVMeFix)가 전원 관리를 픽스합니다.
   * change PXSX to ANS1
   * change PXSX to ANS2
-* Airport/WiFi Patches: [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
+* Airport/WiFi 패치: [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
   * change PXSX to ARPT
-* Other purely cosmetic patches:
-  * change LPC0 to LPCB(use [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-SBUS-MCHC.dsl) for fixing SMBUS support)
+* 기타 코스메틱 패치:
+  * change LPC0 to LPCB(SMBIOS 지원을 픽스하려면 [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-SBUS-MCHC.dsl)를 사용하세요)
   * change PC00 to PCIO
   * change FPU to MATH
   * change TMR to TIMR
   * change PIC to IPIC
   * change GBE1 to ETH0
 
-**Patches**
+**패치**
 
-* TgtBridge patches: No feature parity in OpenCore, see comments(TgtBridge was very buggy in Clover):
-  * [Vit's Comment](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2682158)
-  * [Andrey's Comment](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2678273)
+* TgtBridge 패치: OpenCore에는 해당되는 기능이 없습니다, 아래 댓글을 참고해주세요:
+  * [Vit의 댓글](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2682158)
+  * [Andrey의 댓글](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2678273)
 
 * DisableASPM:
   * `DeviceProperties -> Add -> PciRoot... -> pci-aspm-default | Data | <00>`
 
 * HaltEnabler:
-  * `ACPI -> Quirks -> FadtEnableReset -> YES`
+  * `ACPI -> Quirks -> FadtEnableReset -> true`
 
-**Fixes**:
+**픽스**:
 
 * **FixAirport**:
   * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
@@ -85,7 +85,7 @@ So with the transition from Clover to OpenCore we should start removing unneeded
 
 * **FixShutdown**:
   * [FixShutdown-USB-SSDT](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-USB-SSDT.dsl)
-  * [`_PTS` to `ZPTS` Patch](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-Patch.plist)
+  * [`_PTS` to `ZPTS` 패치](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-Patch.plist)
   * This will not harm Windows or Linux installs as this is just adding missing methods that should've been there to start with. *Blame the firmware writers*
 
 * **FixDisplay**:
