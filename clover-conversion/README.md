@@ -37,7 +37,7 @@ Clover의 설정 패널 사용자라면 아래 파일도 지워야 해요:
 
 ## macOS에서 kext 삭제하기(S/L/E와 L/E)
 
-Clover의 흔한 전통은 kext를 macOS와 함께, 특히 System/Library/Extensions(S/L/E)와 Library/Extensions(L/E)에 설치하는 것이었습니다. 그런데 Clover의 kext 인젝션은 macOS 업데이트마다, 혹은 그냥 갑자기 안 되기도 했다네요;;; OpenCore에서는 다행히도 훨씬 강력하고 안정적인 kext 인젝션 메커니즘을 쓰기 때문에 에러가 잘 나지 않습니다. 즉 봄 청소를 쫌 해야겠네요;;;(???)
+Clover의 흔한 전통은 kext를 macOS와 함께, 특히 System/Library/Extensions(S/L/E)와 Library/Extensions(L/E)에 설치하는 것이었습니다. 그런데 Clover의 kext 인젝션은 macOS 업데이트마다, 혹은 그냥 갑자기 안 되기도 했다네요;;; OpenCore에서는 다행히도 훨씬 강력하고 안정적인 kext 인젝션 메커니즘을 쓰기 때문에 에러가 잘 나지 않습니다. 즉 봄 청소를 쫌 해야겠네요;;; (???)
 
 **참고**: OpenCore는 이미 kernelcache에 있는 kext의 인젝션에 실패합니다. 그러므로 kernelcache를 삭제하는 것 또한 이러한 문제를 해결합니다.
 
