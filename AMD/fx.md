@@ -259,7 +259,6 @@ boot.efi 패치와 펌웨어 픽스와 관련된 설정입니다. 이 가이드�
   * 펜티엄이나 일부 제온 등의 미지원 CPU에 필요한 다중 MSR 엑세스를 끕니다. 
 * **CustomSMBIOSGuid**: false
   * UpdateSMBIOS가 `Custom`으로 설정된 경우의 GUID 패치를 실행합니다. 일반적으로 Dell 노트북에 필요합니다.
-  * Enabling this quirk in tandem with `PlatformInfo -> UpdateSMBIOSMode -> Custom will disable SMBIOS injection into "non-Apple" OSes however we do not endorse this method as it breaks Bootcamp compatibility. Use at your own risk.
   * 이 quirk를 `PlatformInfo -> UpdateSMBIOSMode -> Custom`과 함께 사용하는 것은 비 애플 OS로의 SMBIOS 인젝션을 끄지만, 이 방법은 Bootcamp 호환성을 없애버리기 때문에 권장하지 않습니다. 
 * **DisableIoMapper**:  false
   * AMD에는 DMAR이나 VT-d가 없기 때문에 관련이 없죠.
