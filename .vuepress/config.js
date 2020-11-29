@@ -281,7 +281,17 @@ module.exports = {
                 '/extras/kaslr-fix',
                 '/extras/spoof',
                 '/extras/big-sur/',
-                ['https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion', 'Clover에서 OpenCore로 이동하기'],
+                {
+                    title: 'Clover에서 OpenCore로 이동하기',
+                    collapsable: true,
+                    children: [
+                        ['/clover-conversion', '시작하기'],
+                        ['/clover-conversion/Clover-boot-arg', 'boot-arg 변경'],
+                        ['/clover-conversion/Clover-config', 'config.plist 변경'],
+                        ['/clover-conversion/clover-efi', 'efi 변경'],
+                        ['/clover-conversion/clover-patch', '커널 패치 관련']
+                    ]
+                },
                 '/extras/smbios-support.md',
             ]
         },
