@@ -374,7 +374,6 @@ OpenCore의 부팅 문제를 디버깅하는 데 유용합니다. 이 가이드�
   * 부트 메뉴에서 `Control+Enter`를 통한 기본 부트 엔트리 설정을 허용합니다. 
 * **ApECID**: 0
   * 개인화된 보안 부팅 식별자를 네팅하는 데 사용됩니다. 현재 이 quirk는 macOS Installer의 버그로 인해 안정적이지 않으므로 기본값을 유지하는 걸 권장해요. 
-  * 
 * **AuthRestart**: false
   * FileVault 2의 인증된 재시동을 하용하며, 재시동 시 비밀번호가 필요하지 않습니다. 보안 결함이 될 수 있기 때문에 선택입니다.
 * **BootProtect**: Bootstrap
@@ -661,7 +660,7 @@ UEFI 환경에 관한 설정입니다. 이 가이드에서는 아래 설정을 �
 
 특정 메모리 지역을 OS가 사용하지 않도록 하기 위해 사용하며, 일반적으로 인텔 2세대 샌디브릿지 CPU의 내장 GPU 혹은 결함이 있는 메모리를 사용하는 시스템에 사용됩니다. 이 가이드에서는 이 quirk의 사용에 관한 내용을 다루지 않습니다.
 
-## Cleaning up
+## 정리하기
 
 이제 config.plist를 저장하고 EFI 파티션의 EFI/OC 폴더에 위치하면 됩니다.
 
@@ -678,11 +677,11 @@ Ramus의 노력 덕에 config.plist를 맞게 설정했는지 확인할 수 있�
 
 이 툴을 Dortania와 관련이 없으며, 이 사이트에 대한 이슈는 [Sanity Checker 레포지토리](https://github.com/rlerdorf/OCSanity)를 이용해주세요.
 
-# AMD BIOS Settings
+# AMD BIOS 설정
 
 * 이 옵션의 대부분이 펌웨어에 있지 않을 수도 있습니다. 이럴 때는 아래 설정과 최대한 비슷한 설정을 이용하는 것을 권장하지만, 이러한 옵션이 BIOS에 아예 없을 수도 있아요.
 
-### 아래 옵션을 꺼 주세요:
+### 아래 옵션을 꺼 주세요
 
 * Fast Boot
 * Secure Boot
@@ -690,10 +689,10 @@ Ramus의 노력 덕에 config.plist를 맞게 설정했는지 확인할 수 있�
 * Parallel Port
 * Compatibility Support Module (CSM)(**꼭 꺼야 합니다. `gI0`과 같은 GPU 오류는 이 옵션이 켜져있을 때 자주 일어납니다.**)
 
-### 아래 옵션을 켜 주세요:
+### 아래 옵션을 켜 주세요
 
 * Above 4G decoding(**꼭 켜야 합니다. 이 설정이 없을 경우 boot-args에 `npci-0x2000`을 추가하세요. 단, npci와 이 옵션을 같이 사용하지 말아주세요.**)
 * EHCI/XHCI Hand-off
 * SATA Mode: AHCI
 
-# 모두 완료되었다면, [설치 페이지](../installation/installation-process.md)로 이동해주세요.
+# 모두 완료되었다면, [설치 페이지](../installation/installation-process.md)로 이동해주세요
