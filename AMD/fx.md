@@ -35,7 +35,7 @@ config.plist를 만드는 것이 어려워 보일 수도 있지만 사실은 그
 
 ::: tip 정보
 
-이 섹션에서 시스템에 맞는 SSDT가 추가되며, 이는 **macOS를 부팅하고** [USB 매핑](https://dortania.github.io/OpenCore-Post-Install/usb/), [미지원 GPU 끄기](../extras/spoof.md) 등을 하는 데 필요합니다. 이 사스템에서, **이는 심지어 부팅하는데도 필수죠**. SSDT를 만드는 것에 관한 가이드는 [**ACPI 시작하기(영어)**](https://dortania.github.io/Getting-Started-With-ACPI/)를 참고하세요.
+이 섹션에서 시스템에 맞는 SSDT가 추가되며, 이는 **macOS를 부팅하고** [USB 매핑](https://dortania.github.io/OpenCore-Post-Install/usb/), [미지원 GPU 끄기](../extras/spoof.md) 등을 하는 데 필요합니다. 이 시스템에서, **이는 심지어 부팅하는데도 필수죠**. SSDT를 만드는 것에 관한 가이드는 [**ACPI 시작하기(영어)**](https://dortania.github.io/Getting-Started-With-ACPI/)를 참고하세요.
 
 | 필요한 SSDT | 설명 |
 | :--- | :--- |
